@@ -1,64 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Maven项目对象模型（POM）文件。
+    定义了项目的元数据、依赖项以及构建配置信息。
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 指定当前POM模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- 继承Spring Boot父级POM，用于统一管理依赖版本等配置 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <!-- 当前项目的唯一标识符组ID -->
     <groupId>com.xiaoshuai</groupId>
+
+    <!-- 当前项目的唯一标识符 artifact ID -->
     <artifactId>RobotDemo</artifactId>
+
+    <!-- 项目版本号 -->
     <version>0.0.1-SNAPSHOT</version>
+
+    <!-- 项目名称 -->
     <name>RobotDemo</name>
+
+    <!-- 项目描述 -->
     <description>RobotDemo</description>
+
+    <!-- 项目主页URL（可选） -->
     <url/>
+
+    <!-- 许可证信息列表 -->
     <licenses>
         <license/>
     </licenses>
+
+    <!-- 开发者信息列表 -->
     <developers>
         <developer/>
     </developers>
+
+    <!-- 软件配置管理（SCM）相关信息 -->
     <scm>
         <connection/>
         <developerConnection/>
         <tag/>
         <url/>
     </scm>
+
+    <!-- 项目属性定义区域 -->
     <properties>
+        <!-- 设置Java编译版本为17 -->
         <java.version>17</java.version>
     </properties>
+
+    <!-- 项目所需的所有外部依赖声明 -->
     <dependencies>
+        <!-- Spring Data JPA starter：简化数据库访问操作 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+        <!-- Spring Data Redis starter：支持Redis缓存功能 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+
+        <!-- Spring Web starter：提供Web开发基础能力 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Spring Boot DevTools：开发时热部署工具，仅在运行期有效 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!-- MySQL驱动程序，在运行期使用 -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- Lombok库：通过注解自动生成getter/setter等方法 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- Spring Boot测试框架starter：用于单元测试和集成测试 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -66,8 +109,10 @@
         </dependency>
     </dependencies>
 
+    <!-- 构建相关插件配置 -->
     <build>
         <plugins>
+            <!-- Maven编译器插件：设置注解处理器路径以支持Lombok -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -80,6 +125,8 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+
+            <!-- Spring Boot Maven插件：打包成可执行jar包，并排除Lombok依赖 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
